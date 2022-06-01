@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import math
 import random
 from cv2 import FONT_HERSHEY_SIMPLEX
@@ -32,12 +34,7 @@ class SnakeGameClass:
         self.score = 0
         self.gameOver = False
 
-    def randomColorHead(self):
-        r = random.randint(0,255)
-        g = random.randint(0,255)
-        b = random.randint(0,255)
-
-        self.rgb = (r, g, b)
+        self.rgb = (76, 187, 23)
 
     def randomFoodLocation(self):
         self.foodPoint = random.randint(100, 1000), random.randint(100, 600)
@@ -46,9 +43,9 @@ class SnakeGameClass:
 
         if self.gameOver:
             Helpers.putTextRect(imgMain, "Game Over", [300, 400],
-                               scale=2, thickness=5, font=FONT_HERSHEY_SIMPLEX, offset=20)
+                               scale=2, thickness=5, colorR=(76, 187, 23), font=FONT_HERSHEY_SIMPLEX, offset=20)
             Helpers.putTextRect(imgMain, f'Your Score: {self.score}', [300, 550],
-                               scale=2, thickness=5, font=FONT_HERSHEY_SIMPLEX, offset=20)
+                               scale=2, thickness=5, colorR=(76, 187, 23),font=FONT_HERSHEY_SIMPLEX, offset=20)
         else:
             px, py = self.previousHead
             cx, cy = currentHead
@@ -72,7 +69,7 @@ class SnakeGameClass:
             rx, ry = self.foodPoint
             if rx - self.wFood // 2 < cx < rx + self.wFood // 2 and \
                     ry - self.hFood // 2 < cy < ry + self.hFood // 2:
-                self.randomColorHead()
+                # self.randomColorHead()
                 self.randomFoodLocation()
                 self.allowedLength += 50
                 self.score += 1
@@ -82,7 +79,7 @@ class SnakeGameClass:
             if self.points:
                 for i, point in enumerate(self.points):
                     if i != 0:
-                        cv2.line(imgMain, self.points[i - 1], self.points[i], (255, 0, 255), 20)
+                        cv2.line(imgMain, self.points[i - 1], self.points[i], (76, 187, 23), 20)
                 cv2.circle(imgMain, self.points[-1], 20, self.rgb, cv2.FILLED)
 
             # Draw Food
@@ -92,7 +89,7 @@ class SnakeGameClass:
             Helpers.putTextRect(imgMain, f'Score: {self.score}', [50, 80],
                                scale=3, thickness=3, offset=10)
 
-            Helpers.putTextRect(imgMain, f'Lives: {self.tries}', [50, 300],
+            Helpers.putTextRect(imgMain, f'Lives: {self.tries}', [50, 160],
                                scale=3, thickness=3, offset=10)
 
             # Check for Collision

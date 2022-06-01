@@ -72,13 +72,13 @@ class HandDetector:
 
                 ## draw
                 if draw:
-                    self.mpDraw.draw_landmarks(img, handLms,
+                    """ self.mpDraw.draw_landmarks(img, handLms,
                                                self.mpHands.HAND_CONNECTIONS)
                     cv2.rectangle(img, (bbox[0] - 20, bbox[1] - 20),
                                   (bbox[0] + bbox[2] + 20, bbox[1] + bbox[3] + 20),
-                                  (255, 0, 255), 2)
+                                  (255, 0, 255), 2) """
                     cv2.putText(img, myHand["type"], (bbox[0] - 30, bbox[1] - 30), cv2.FONT_HERSHEY_PLAIN,
-                                2, (255, 0, 255), 2)
+                                2, (76, 187, 23), 2)
         if draw:
             return allHands, img
         else:

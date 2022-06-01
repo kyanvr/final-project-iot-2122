@@ -130,7 +130,7 @@ def rotateImage(img, angle, scale=1):
 
 
 def putTextRect(img, text, pos, scale=3, thickness=3, colorT=(255, 255, 255),
-                colorR=(255, 0, 255), font=cv2.FONT_HERSHEY_PLAIN,
+                colorR=(76, 187, 23), font=cv2.FONT_HERSHEY_PLAIN,
                 offset=10, border=None, colorB=(0, 255, 0)):
     """
     Creates Text with Rectangle Background
@@ -151,7 +151,6 @@ def putTextRect(img, text, pos, scale=3, thickness=3, colorT=(255, 255, 255),
     (w, h), _ = cv2.getTextSize(text, font, scale, thickness)
 
     x1, y1, x2, y2 = ox - offset, oy + offset, ox + w + offset, oy - h - offset
-
     cv2.rectangle(img, (x1, y1), (x2, y2), colorR, cv2.FILLED)
     if border is not None:
         cv2.rectangle(img, (x1, y1), (x2, y2), colorB, border)
@@ -163,8 +162,8 @@ def putTextRect(img, text, pos, scale=3, thickness=3, colorT=(255, 255, 255),
 def main():
     cap = cv2.VideoCapture(0)
     while True:
-        success, img = cap.read()
-        img, bbox = putTextRect(img, "CVZone", [50, 50], 2, 2, offset=10, border=5)
+        img = cap.read()
+        img = putTextRect(img, "CVZone", [50, 50], 2, 2, offset=10, border=5)
         imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         imgList = [img, img, imgGray, img, imgGray]
         imgStacked = stackImages(imgList, 2, 0.5)
