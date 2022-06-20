@@ -1,9 +1,0 @@
-dist
-build
-
-*.spec
-
-./DS_STORE
-.DS_STORE
-
-setup.py
