@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 from services.handTrackingModule import HandDetector
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, 1280)
 cap.set(4, 720)
 
@@ -39,6 +39,8 @@ class SnakeGameClass:
     def showScoreAndLives(self, imgMain):
         Helpers.putTextRect(imgMain, f'Score: {self.score}', [50, 80], scale=3, thickness=3, offset=10)
         Helpers.putTextRect(imgMain, f'Lives: {self.tries}', [50, 160], scale=3, thickness=3, offset=10)
+        if self.gameOver:
+            Helpers.putTextRect(imgMain, f'Game over...', [50, 240], scale=3, thickness=3, offset=10)
 
     def randomFoodLocation(self):
         self.foodPoint = random.randint(100, 1000), random.randint(100, 600)
@@ -47,9 +49,9 @@ class SnakeGameClass:
         self.showScoreAndLives(imgMain)
 
         if self.gameOver:
-            Helpers.putTextRect(imgMain, "Game Over", [300, 400],
+            Helpers.putTextRect(imgMain, "Game Over", [50, 400],
                                scale=2, thickness=5, colorR=(109, 67, 126), font=FONT_HERSHEY_SIMPLEX, offset=20)
-            Helpers.putTextRect(imgMain, f'Your Score: {self.score}', [300, 550],
+            Helpers.putTextRect(imgMain, f'Press "R" for restart, "Q" for exit', [50, 550],
                                scale=2, thickness=5, colorR=(109, 67, 126),font=FONT_HERSHEY_SIMPLEX, offset=20)
         else:
             px, py = self.previousHead

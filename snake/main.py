@@ -1,3 +1,4 @@
+import sys
 import cv2
 from services.snake import SnakeGameClass
 from services.handTrackingModule import HandDetector
@@ -29,3 +30,5 @@ if __name__ == '__main__':
             game.tries = 3
             game.score = 0
             game.gameOver = False
+        if key == ord('q'):
+            sys.exit()
