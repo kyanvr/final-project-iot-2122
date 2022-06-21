@@ -3,7 +3,7 @@ import sys
 import math
 import random
 from cv2 import FONT_HERSHEY_SIMPLEX
-from services.Helpers import Helpers
+from services.helpers import Helpers
 import cv2
 import numpy as np
 from services.handTrackingModule import HandDetector
