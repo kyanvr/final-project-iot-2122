@@ -2,6 +2,7 @@ import sys
 import cv2
 from services.snake import SnakeGameClass
 from services.handTrackingModule import HandDetector
+from services.faceDetection import FaceDetection
 
 cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
