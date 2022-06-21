@@ -1,13 +1,13 @@
 import pygame
 import pygame_menu
-from floppy import flappySnake
+from snake.main import snakeGame
 
 pygame.init()
 
 screen = pygame.display.set_mode((600, 400))
 
 def start_the_game():
-    flappySnake()
+    snakeGame.start()
 
 menu = pygame_menu.Menu('Welcome', 400, 300,
                        theme=pygame_menu.themes.THEME_BLUE)
