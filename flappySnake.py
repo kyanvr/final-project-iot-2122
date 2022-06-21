@@ -2,7 +2,6 @@ import sys, time, random, pygame
 from pygame import mixer
 from collections import deque
 import cv2 as cv, mediapipe as mp
-from services.Helpers import Helpers
 from components.Button import Button
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -34,6 +33,7 @@ space_between_pipes = 150
 # load background music
 pygame.mixer.music.load("./assets/music/arcade.wav")
 pygame.mixer.music.play(-1, 0, 20000)
+pygame.mixer.music.set_volume(0.3)
 
 # load button images 
 exit_img = pygame.image.load("./assets/exit.png").convert_alpha()
